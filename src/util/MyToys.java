@@ -10,7 +10,27 @@ import java.util.Scanner;
 */
 public class MyToys {
     private static Scanner sc = new Scanner(System.in);
-
+    
+    public static String foodCategory[] = {"Vegetables",
+                                    "Fruits",
+                                    "Grains, legumes, nuts and seeds",
+                                    "Meat and poultry",
+                                    "Fish and seafood",
+                                    "Dairy food",
+                                    "Eggs"};
+    
+    public static String placeList[] = {"Freezer compartment",
+                                    "Ice cube tray",
+                                    "Meat keeper",
+                                    "Refrigerator compartment",
+                                    "Glass cover",
+                                    "Crisper",
+                                    "Egg tray",
+                                    "Butter compartment",
+                                    "Dairy compartment",
+                                    "Door shelf",
+                                    "Guard rail"};
+    
     public static int getAnInteger(String inputMsg, String erroMsg) {
         int n;
         while (true) {
