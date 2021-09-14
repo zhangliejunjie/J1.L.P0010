@@ -80,6 +80,15 @@ public class FoodList implements Serializable {
         }
         return res;
     }
+//    search Food by weight >= x
+    private ArrayList < Food > searchListFoodByWeight(int key) {
+        ArrayList < Food > res = new ArrayList < > ();
+        for (Food p: foodList) {
+            if (p.getWeight() >= key)
+                res.add(p);
+        }
+        return res;
+    }
 
     public void searchFoodList() throws ParseException {
         if (foodList.isEmpty()) {
@@ -94,6 +103,7 @@ public class FoodList implements Serializable {
         srchMenu.addNewOption("3. Search by type");
         srchMenu.addNewOption("4. Search by place");        
         srchMenu.addNewOption("5. Search by expired date");
+        srchMenu.addNewOption("6. Search by weight");
         srchMenu.printMenu();
         int srchChoice = srchMenu.getChoice();
         switch(srchChoice) {
@@ -129,7 +139,11 @@ public class FoodList implements Serializable {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
                 Date keyDate = MyToys.getADate("Enter food's expired date: ", "Invalid", df.parse("01-01-2000"), df.parse("30-06-2030"));
                 res = searchListFoodByExpDate(keyDate);
-                break;           
+                break;  
+            case 6: 
+                int keyInt = MyToys.getAnInteger("Enter food's weight lowerboud: ", "Food's weight must be an integer between 1 and 1000", 1, 10000);
+                res = searchListFoodByWeight(keyInt);
+                break;
         }
         if (res == null || res.isEmpty()) {
             System.err.println("Not found");
@@ -252,7 +266,7 @@ public class FoodList implements Serializable {
         }
         String id;
         int pos;
-        id = MyToys.getID("Enter food's id (AA-DDDDD)\nA matches any alphabet\nD matches any digit: ", "Invalid", "^[A-Za-z]{2}-\\d{5}$");
+        id = MyToys.getID("Enter food's id (AA-DDDDD)\nA matches any alphabet\nD matches any digit: ", "Wrong format", "^[A-Za-z]{2}-\\d{5}$");
         pos = searchFoodById(id);
         if (pos == -1) {
             System.err.println("Not found");
