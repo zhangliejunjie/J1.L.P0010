@@ -16,8 +16,8 @@ public class Program {
             System.err.println("File error");
         }
         mainMenu.addNewOption("1. Add a new food");
-        mainMenu.addNewOption("2. Search a food by name");
-        mainMenu.addNewOption("3. Remove the food by ID");
+        mainMenu.addNewOption("2. Search a food");
+        mainMenu.addNewOption("3. Remove the food");
         mainMenu.addNewOption("4. Print the food list in the descending order of expired date");
         mainMenu.addNewOption("5. Quit");
         int choice = 0;

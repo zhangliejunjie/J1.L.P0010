@@ -17,19 +17,18 @@ public class FileDAO {
         }
         w.close();
     }
-    //cuối file văn bản có byte đặc biệt gọi là EOF
+
     public static ArrayList<Food> readTextFile(String fileName) throws FileNotFoundException, IOException, ParseException {
         FileReader f = new FileReader(fileName);
         BufferedReader bf = new BufferedReader(f);
         ArrayList<Food> list = new ArrayList<>();
-        while (bf.ready()) { //con chốt chặn EOF            
+        while (bf.ready()) {          
             String s = bf.readLine();
             String[] tmp = s.split(",");
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
             if (tmp.length == 6) {
                 Food d = new Food(tmp[0], tmp[1], 
                         Integer.parseInt(tmp[2]), tmp[3], tmp[4], df.parse(tmp[5]));   
-//            Food(id, name, weight, type, place, expiredDate);
                 list.add(d);
             }
         }

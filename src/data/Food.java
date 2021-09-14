@@ -73,8 +73,7 @@ public class Food implements Comparable<Food>{
         System.out.printf("|%8s|%-15s|%-6d|%-31s|%-24s|%-10s|\n",
                     id, name, weight, type, place, df.format(expiredDate));
     }
-//    |   ID   |   NAME    |WEIGHT|         TYPE OF FOOD          |      PLACE TO PUT      | EXP-DATE |
-    
+  
     @Override
     public int compareTo(Food that) {
         return expiredDate.compareTo(that.getExpiredDate());

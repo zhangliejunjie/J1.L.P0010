@@ -20,14 +20,13 @@ public class FoodList implements Serializable {
         this.foodList = foodList;
     }
 
-    //    search Food ra vị trí
     public int searchFoodById(String id) {
         for (int i = 0; i < foodList.size(); i++)
             if (foodList.get(i).getId().compareToIgnoreCase(id) == 0)
                 return i;
         return -1;
     }
-    //    search Food ra nguyên Food
+
     public Food searchObjectFoodById(String id) {
         if (foodList.isEmpty())
             return null;
@@ -36,7 +35,7 @@ public class FoodList implements Serializable {
                 return p;
         return null;
     }
-    //
+
     private ArrayList < Food > searchListFoodById(String key) {
         ArrayList < Food > res = new ArrayList < > ();
         for (Food p: foodList) {
@@ -211,26 +210,6 @@ public class FoodList implements Serializable {
         }
     }
 
-    public void searchFoodById() {
-        if (foodList.isEmpty()) {
-            System.out.println("The refrigerator is empty. Nothing to print.");
-            return;
-        }
-        String id;
-        Food x;
-        id = MyToys.getID("Enter food's ID (AA-DDDDD)\nA matches any alphabet\nD matches any digit: ", "Invalid", "^[A-Za-z]{2}-\\d{5}$");
-        x = searchObjectFoodById(id);
-        System.out.println("-----------------------------------------------------------------------------------------------------");
-        if (x == null)
-            System.err.println("Not found");
-        else {
-            System.out.println("Here is the food that you wanna search");
-            String header = "|   ID   |     NAME      |WEIGHT|         TYPE OF FOOD          |      PLACE TO PUT      | EXP-DATE |";
-            System.out.println(header);
-            x.showDetail();
-        }
-    }
-
     public void addNewFood() throws ParseException {
         String id, name, type, place;
         Date expiredDate;
@@ -241,12 +220,6 @@ public class FoodList implements Serializable {
             if (pos != -1)
                 System.err.println("This food ID is already exist");
         } while (pos != -1);
-        // private String id;
-        //    private String name;
-        //    private int weight;
-        //    private String type;
-        //    private String place;
-        //    private Date expiredDate;
         name = MyToys.getAName("Enter food's name: ",
             "Food's name just contains characters and space");
         weight = MyToys.getAnInteger("Enter food's weight: ", "Food's weight must be an integer between 1 and 10000", 1, 10000);
