@@ -179,9 +179,6 @@ public class MyToys {
                 System.out.print(inputMsg);
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
                 d = df.parse(sc.nextLine());
-                //                System.out.println(df.format(lowerBound));
-                //                System.out.println(df.format(d));
-                //                System.out.println(df.format(upperDate));
                 if (d.compareTo(lowerBound) < 0 || d.compareTo(upperDate) > 0) {
                     throw new Exception();
                 }

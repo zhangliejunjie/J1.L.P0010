@@ -215,7 +215,7 @@ public class FoodList implements Serializable {
         Date expiredDate;
         int pos, weight;
         do {
-            id = MyToys.getID("Enter food's id (AA-DDDDD)\nA matches any alphabet\nD matches any digit: ", "Invalid", "^[A-Za-z]{2}-\\d{5}$");
+            id = MyToys.getID("Enter food's id (AA-DDDDD)\nA matches any alphabet\nD matches any digit: ", "Wrong format", "^[A-Za-z]{2}-\\d{5}$");
             pos = searchFoodById(id);
             if (pos != -1)
                 System.err.println("This food ID is already exist");
@@ -235,11 +235,8 @@ public class FoodList implements Serializable {
         menu.printMenu();
         choice = menu.getChoice();
         place = MyToys.placeList[choice - 1];
-        
-        
-
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        expiredDate = MyToys.getADate("Enter food's expired date: ", "Invalid", today, df.parse("30-06-2030"));
+        expiredDate = MyToys.getADate("Enter food's expired date: ", "Invalid date range", today, df.parse("30-06-2030"));
         boolean check = MyToys.getBoolean("Are you sure adding this food (Y/N): ",
             "Invalid");
         if (check) {
