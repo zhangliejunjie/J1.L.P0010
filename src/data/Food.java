@@ -70,25 +70,20 @@ public class Food implements Comparable<Food>{
     
     public void showDetail() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        System.out.printf("|%8s|%-10s|%-5d|%-31s|%-10s|%-10s|\n",
-                    id, name, weight, type, place, expiredDate);
+        System.out.printf("|%8s|%-15s|%-6d|%-31s|%-24s|%-10s|\n",
+                    id, name, weight, type, place, df.format(expiredDate));
     }
+//    |   ID   |   NAME    |WEIGHT|         TYPE OF FOOD          |      PLACE TO PUT      | EXP-DATE |
     
-//    public void showInfor() {
-//        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-//        System.out.printf("|%-4d|%-15s|%-10s|%-10s|%-5d|\n", 
-//                id, title, df.format(beginDate), df.format(endDate), totalHours);
-//    }
-
     @Override
     public int compareTo(Food that) {
-        return id.compareToIgnoreCase(that.getId());
+        return expiredDate.compareTo(that.getExpiredDate());
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return id + "," + name + "," + weight + "," + type + "," + place + "," + df.format(expiredDate);
     }
     
 }
-// private String id;
-//    private String name;
-//    private int weight;
-//    private String type;
-//    private String place;
-//    private Date expiredDate;
